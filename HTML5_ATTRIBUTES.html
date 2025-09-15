@@ -1,0 +1,179 @@
+<!--
+PAGE META ATTRIBUTES - meta
+- Defined in the head section of the HTML document
+name: description, keywords, author, viewport 
+content: description info, keywords info, author info, viewport info
+
+PAGE LINK ATTRIBUTES - link
+rel: stylesheet, icon
+href: URL
+
+PAGE SCRIPT ATTRIBUTES - script
+type: text/javascript, module
+- default is text/javascript
+- module is used for ES6 modules, forces strict mode and loads the script after the document has been parsed
+src: URL
+- URL of the external script file
+defer: true, false
+- If true, the script will be executed after the document has been parsed
+async: true, false
+- If true, the script will be executed as soon as it is available, without waiting for the document to finish parsing
+
+IMAGE ATTRIBUTES - img
+title - provides additional information about the image
+loading:
+eager - by default, lazy
+- specifies whether the browser should load the image immediately or defer loading until it reaches a certain point in the viewport
+
+INPUT ATTRIBUTES - input
+type: text, password, radio, checkbox, submit, reset, button, file, hidden, image, date, email, month, number, range, search, tel, time, url, week
+autocomplete: on, off
+- Provides suggestions for the input field based on previous entries
+required: true, false
+- if only "required" is present, the input field is required
+autofocus: true, false
+- if only "autofocus" is present, the input field is focused when the page loads. There can be only one input field with "autofocus" on the page
+pattern: regular expression
+min: minimum value if input type number, date, time, month, week
+max: maximum value if input type number, date, time, month, week
+step: step value if input type number, date, time, month, week
+value: default value of the input field
+list: id of the datalist element
+- references a datalist element to provide suggestions for the input field
+accept: file types to accept if input type file
+- accepts a comma separated list of file types to accept
+- accepts a wildcard character (*) to accept all file types
+- accepts a file type by using the file type name, e.g. image/*, audio/*, video/*, text/*, application/*
+
+BUTTON ATTRIBUTES - button
+type: button, submit, reset, menu
+onclick: JavaScript function to call when clicked
+disabled: true, false
+formaction: URL
+formmethod: GET, POST
+formenctype: application/x-www-form-urlencoded, multipart/form-data, text/plain
+- specifies the encoding type of the form data when submitted
+formtarget: _blank, _self, _parent, _top
+formnovalidate: true, false
+- specifies whether to validate the form data before submitting
+
+HYPERLINK ATTRIBUTES - href
+href: URL 
+- can reference an id by using #id
+- can reference a mailto link by using mailto:email address
+- can reference a phone number by using tel:phone number
+- can reference a file by using file://path to file
+- can reference a javascript function by using javascript:function name
+- can go back to site main page by using href="/"
+target: 
+_blank - open in new tab
+_self - open in same tab
+_parent - open in parent frame
+_top - open in full window
+
+DIVIDER AND SPAN ATTRIBUTES - div,span
+class: class name
+id: id name
+
+NAVIGATION ATTRIBUTES - nav
+aria-label: label for the navigation bar
+aria-labelledby: label for the navigation bar
+- references an id of another element on the page
+
+TIME ATTRIBUTES - time
+datetime: date and time in ISO 8601 format
+- To write duration type: PT "value"Y "value"DT "value"H "value"M "value"S
+- To write date type YYYY-MM-DD
+
+TABLE HEADER ATTRIBUTES - th
+scope: col, row, colgroup, rowgroup
+- to where should it snap to
+rowspan: number of rows to span
+colspan: number of columns to span 
+
+TABLE DATA ATTRIBUTES - td
+headers: id of the header cell
+- references an id of a header cell to align to on the page
+rowspan: number of rows to span
+colspan: number of columns to span
+
+SELECT ATTRIBUTES - select
+multiple: true, false
+- allows multiple selections in the dropdown list
+size: number of options to show at once
+
+ORDERED LIST ATTRIBUTES - ol
+start: number
+- specifies the starting number of the list
+end: number
+- specifies the ending number of the list
+reversed: true, false
+- specifies whether the list should be reversed or not
+
+LIST ITEM ATTRIBUTES - li
+value: number
+- specifies the value of the list item. Useful for ordered lists when the list has the start attribute
+
+DATALIST ATTRIBUTES - datalist
+id: id of the datalist element
+- references a datalist element to provide suggestions for the input field
+
+OPTION ATTRIBUTES - option
+selected: true, false
+- Selects the option by default
+
+TEXTAREA ATTRIBUTES - textarea
+rows: number of rows to show
+cols: number of columns to show
+
+FORM ATTRIBUTES - form
+action: URL
+method: GET, POST
+- GET - sends data to the server in the URL
+- POST - sends data to the server in the body of the request
+enctype: application/x-www-form-urlencoded, multipart/form-data, text/plain
+- application/x-www-form-urlencoded - default encoding type
+- multipart/form-data - used for file uploads
+- text/plain - sends data as plain text
+novalidate: true, false
+- if only "novalidate" is present, the form will not be validated when submitted
+
+VIDEO ATTRIBUTES - video
+poster: URL
+- image to show before the video plays
+controls: true, false
+- shows the video controls
+autoplay: true, false
+loop: true, false
+muted: true, false
+preload: none, metadata, auto
+- metadata - loads the metadata of the video
+- auto - loads the video when the page loads
+controlslist: nodownload, nofullscreen, noremoteplayback
+- nodownload - hides the download button
+- nofullscreen - hides the fullscreen button
+- noremoteplayback - hides the remote playback button
+
+CUSTOM DATA ATTRIBUTES - data
+data-some-attribute="value"
+- can be used to store custom data on an element
+- must start with "data-"
+
+ARIA ATTRIBUTES - used for accessibility
+aria-label - label for the element - used for accessibility
+aria-labelledby - id of the element used for a label - used for accessibility
+aria-live - how the element should be announced by screen readers - assertive, polite, off - used for accessibility
+- assertive - announces the element immediately
+- polite - announces the element when the user is idle
+aria-hidden - hides the element from screen readers - true, false - used for accessibility
+
+OPEN ATTRIBUTE - dialog
+open - true, false
+- if only "open" is present, the dialog is open
+
+POPOVER ATTRIBUTE
+popover - auto, manual
+- auto - the popover will be shown when the user clicks on the element
+- manual - the popover will be shown when the user clicks on the element and hides when the user clicks outside the element
+popovertarget - id of the element to show as a popover
+-->

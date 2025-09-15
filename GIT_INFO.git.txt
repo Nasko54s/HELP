@@ -1,0 +1,113 @@
+GIT COMMANDS:
+
+BASIC WORKFLOW IN GIT:
+1. Create new files or make changes to existing files.
+2. git commit -a -m "Short detail message about changes"
+3. git push (to send code updates to GitHub repo)
+
+CHECK INSTALLED VERSION:
+git --version - check the installed version of git
+git -v - check the installed version of git (alternative)
+
+CONFIG SETTINGS:
+git config --global user.name "Your Name"
+git config --global user.email "You@Email.com"
+git config --global init.defaultBranch main
+
+HELP:
+git help <command>
+Example: git help config
+
+REMOVE GIT FROM FOLDER:
+rm -rf .git - remove git from the current folder
+
+CLONE A REPOSITORY:
+git clone <repository-url> - clone a repository from a URL
+Example: git clone https://github.com/gitdagray/css_course.git
+
+CREATE NEW REPO:
+git init
+
+CHECK REPO STATUS:
+git status
+git status -s
+
+ADD FILES TO REPO:
+git add <filename>
+Example: git add index.html
+Add ALL files with: git add .
+
+DISCARD CHANGES:
+git restore <filename>
+
+LINK A LOCAL REPO TO GITHUB:
+git remote add <name> <github-url>
+git branch -M main
+git push -u <name> main
+
+COMMIT FILE CHANGES:
+git commit -m "Short message"
+Combine add & commit:
+git commit -a -m "Short message"
+
+UNSTAGE A NEW ADDED FILE:
+git rm --cached <filename>
+
+UNSTAGE A PREVIOUSLY MODIFIED FILE:
+git restore --staged <filename>
+
+UNTRACKED FILE STATUS:
+Files not yet added to repository.
+VS Code displays a U beside the filename.
+
+UNMODIFIED FILE STATUS:
+Tracked files that have not been changed.
+
+MODIFIED FILE STATUS:
+Tracked files that have been changed.
+VS Code displays an M beside the filename.
+
+STAGED FILE STATUS:
+Tracked files that have been added.
+VS Code displays an A beside the filename.
+
+IGNORED FILE STATUS:
+Files that match a pattern or exact match in .gitignore
+VS Code grays out the filename.
+
+KEEP GIT FROM ASKING FOR CREDENTIALS WITH EVERY GIT PUSH:
+git config --global credential.helper 'cache --timeout=3600'
+
+ALL GIT COMMANDS:
+git - display help for git commands
+git help - display help for git commands (alternative)
+git config --global user.name "Your Name" - set your name
+git config --global user.email "Email" - set your email
+git config --global init.defaultBranch <name> - set default branch name
+git init - initialize a new git repository
+git clone <repository> - clone an existing repository
+git add <file> - stage changes for commit
+git add . - stage all changes for commit
+git restore <file> - discard changes in a file
+git restore --staged <file> - unstage a previously modified file
+git rm --cached <filename> - unstage a new added file
+git commit - commit staged changes with a message in the editor
+git commit -m "message" - commit staged changes with a message in the terminal
+git commit -a -m "message" - combine add and commit
+git status - check the status of the repository
+git push - push changes to the remote repository
+git pull - fetch and merge changes from the remote repository
+git branch - list branches
+git checkout <branch> - switch to a different branch
+git checkout -b <branch> - create and switch to a new branch
+git switch <branch> - switch to a different branch (alternative to checkout)
+git switch -b <branch> - create and switch to a new branch (alternative to checkout)
+git merge <branch> - merge a branch into the current branch
+git log - view commit history
+git diff - show changes between commits, branches, or working directory
+git reset <commit> - reset the current branch to a specific commit
+git revert <commit> - create a new commit that undoes changes from a previous commit
+git stash - temporarily save changes that are not ready to be committed
+git remote - manage remote repositories
+git remote add <name> <url> - add a new remote repository
+git remote remove <name> - remove a remote repository

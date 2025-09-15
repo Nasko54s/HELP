@@ -1,0 +1,728 @@
+/*
+PRIORITY - SELECTORS
+1. !important - overrides all other styles. Used on an attribute.
+2. p.myclass#myid - selects all p elements with the class of myclass and the id of myid
+3. p#myid - selects all p elements with the id of myid
+4. p.myclass - selects all p elements with the class of myclass
+   p:pseudo-class - selects all p elements with the pseudo-class of pseudo-class - also applies to classes and ids
+5. p h1 - selects all h1 elements inside p elements
+   p > h1 - selects all h1 elements that are direct children of p elements
+   p + h1 - selects all h1 elements that are siblings of p elements
+   p ~ h1 - selects all h1 elements that are siblings of p elements, but not necessarily direct children
+6. #myid - selects the element with the id of myid
+7 .myclass - selects all elements with the class of myclass
+8. p,h1 - selects all elements of that types
+9. * - selects all elements
+
+PSEUDO-CLASS ATTRIBUTE SELECTORS
+p[attribute] - selects all p elements with the attribute of attribute
+p[attribute=value] - selects all p elements with the attribute of attribute and the value of value
+p[attribute^=value] - selects all p elements with the attribute of attribute that starts with the value of value
+p[attribute$=value] - selects all p elements with the attribute of attribute that ends with the value of value
+p[attribute*=value] - selects all p elements with the attribute of attribute that contains the value of value
+p[attribute~=value] - selects all p elements with the attribute of attribute that contains the value of value as a whole word
+p[attribute|=value] - selects all p elements with the attribute of attribute that starts with the value of value followed by a hyphen
+
+PSEUDO-CLASSES
+:root - selects the root element of the document - usually the html element
+- CSS3 variables are usually defined here
+:is(selector1, selector2, ...) - selects all elements that match any of the selectors - used to group selectors together. Gets the specificity of the most specific selector
+:where(selector1, selector2, ...) - selects all elements that match any of the selectors - used to group selectors together. Gets the specificity of 0.
+:has(selector) - selects all elements that contain at least one element that matches the selector
+:not(selector) - selects all elements that do not match the selector
+:target - selects the element that is being targeted by a link with a fragment identifier(#id)
+:any-link - selects all normal and visited links
+:first-child - selects the first child of the element
+:last-child - selects the last child of the element
+:nth-child(n) - selects the nth child of the element - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+:nth-last-child(n) - selects the nth child of the element from the end - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+:nth-of-type(n) - selects the nth child of the element of that type - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+:nth-last-of-type(n) - selects the nth child of the element of that type from the end - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+- CSS counting starts at 1, not 0
+- You can use the variable "n" to select every other element - 2n+1, 2n+2
+- You can use the keywords "odd" and "even" to select all odd or even elements
+
+HYPERLINKS PSEUDO-CLASS SELECTORS
+a:link - selects all unvisited links
+a:visited - selects all visited links
+a:any-link - selects all links, both visited and unvisited
+a:hover - selects all links when the mouse is over them
+a:active - selects all links when they are clicked
+a:focus - selects all links when they are focused
+- link visited hover focus active - correct order of pseudo-classes
+
+LIST PSEUDO-CLASS SELECTORS
+li:first-child - selects the first child of the list
+li:last-child - selects the last child of the list
+li:nth-child(n) - selects the nth child of the list - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+li:nth-last-child(n) - selects the nth child of the list from the end - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+li:nth-of-type(n) - selects the nth child of the list of that type - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+li:nth-last-of-type(n) - selects the nth child of the list of that type from the end - n is a number, formula, or keyword - odd, even, 2n+1, 2n+2
+
+FOCUS PSEUDO-CLASS SELECTORS
+:focus - selects the element when it is focused
+:focus-visible - selects the element when it is focused and the user is using a keyboard or other non-pointer input method
+:focus-within - selects the element when it or any of its children are focused
+:has(:focus-visible) - selects the element when it or any of its children are focused and the user is using a keyboard or other non-pointer input method
+
+PSEUDO-ELEMENT SELECTORS
+::before - selects the element before the content of the element
+::after - selects the element after the content of the element
+::first-letter - selects the first letter of the element
+::first-line - selects the first line of the element
+::placeholder - selects the placeholder text of an input element
+::selection - selects the text that is selected by the user
+::backdrop - selects the backdrop of a modal element
+::slotted(selector) - selects the slotted elements in a shadow DOM - selector is the selector for the slotted elements
+::part(name) - selects the part of a shadow DOM element - name is the name of the part
+::cue - selects the text track cue of a video or audio element
+::marker - selects the marker of a list item - used to style the bullet points of a list
+::placeholder-shown - selects the input element when it is showing the placeholder text
+::file-selector-button - selects the file input button
+::spelling-error - selects the text that has a spelling error
+::grammar-error - selects the text that has a grammar error
+::progress-bar - selects the progress bar of a progress element
+::range-thumb - selects the thumb of a range input element
+::range-track - selects the track of a range input element
+
+CONTENT ATTRIBUTE
+content - used with pseudo-elements ::before and ::after to insert content - can be text, images, counters, or quotes
+- You can concatenate strings like this: "text" "more text"
+
+CONTENT VALUES
+open-quote - inserts an opening quote
+close-quote - inserts a closing quote
+
+LIST PSEUDO-ELEMENT SELECTORS
+::marker - selects the marker of the list
+
+FORM PSEUDO-CLASS SELECTORS
+:enabled - selects all enabled form elements
+:disabled - selects all disabled form elements
+:checked - selects all checked form elements
+:indeterminate - selects all indeterminate form elements
+:valid - selects all valid form elements
+:invalid - selects all invalid form elements
+:in-range - selects all form elements with a value in the specified range
+:out-of-range - selects all form elements with a value out of the specified range
+:required - selects all form elements that are required
+:optional - selects all form elements that are optional
+:user-invalid - selects all form elements that are invalid due to user input
+:user-valid - selects all form elements that are valid due to user input
+
+CSS3 RESET
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+
+CSS3 IMAGE RESET
+img {
+   display: block;
+}
+
+CSS3 UTILITY CLASSES
+.nowrap{
+   white-space: nowrap;
+}
+
+CSS3 VARIABLES - defined in the :root selector
+--variable-name: value; - defines a variable
+- to use a variable, use var(--variable-name)
+- variables can be redefined in other selectors
+- you can provide a fallback value if the variable is not defined - var(--variable-name, fallback-value)
+
+CSS3 CUSTOM PROPERTIES - defined in the file 
+@property --variable-name {
+   syntax: "<type>"; - defines the type of the variable - <color>, <length>, <percentage>, <number>, <angle>, <time>, <url>, <string>, <integer>, <custom-ident>
+   inherits: true/false; - defines whether the variable inherits from its parent element
+   initial-value: value; - defines the initial value of the variable
+}
+
+ALL ATTRIBUTE
+- all - resets all properties of the selector to a specific value - initial, inherit, unset, revert
+
+CSS3 GLOBAL VALUES
+inherit - inherits the value from the parent element
+initial - sets the value to the default value of the property
+unset - if the property is inherited, it inherits the value from the parent element, otherwise it sets the value to the default value of the property
+revert - resets the property to the value established by the user-agent stylesheet or by user styles if any exist
+
+HIDING ELEMENTS
+- use left/right/top/bottom: +-9999px to hide an element off the screen but still have it in the document flow
+- use display: none to hide an element and remove it from the document flow
+- use visibility: hidden to hide an element but still have it in the document flow
+- use opacity: 0 to hide an element but still have it in the document flow
+
+MEASUREMENTS
+px - pixels - absolute size
+% - percentage of root element - block elements are 100% of the width of the parent element by default
+em - relative to the size of the element - 1 em = 16px
+rem - relative to the size of the page - 1 rem = 16px
+vh - relative to 1% of the height of the screen/viewport
+dvh - relative to 1% of the height of the screen/viewport, but accounts for dynamic toolbars on mobile devices
+svh - relative to 1% of the height of the screen/viewport, but assumes there is a dynamic toolbar on mobile devices
+lvh - relative to 1% of the height of the screen/viewport, but ignores dynamic toolbars on mobile devices
+vw - relative to 1% of the width of the screen/viewport
+ch - relative to the width of the "0" character in the font
+fr - relative to the size of the element. Used in display:grid - 1 fr = 1 fraction of the available space
+
+APPEARANCE ATTRIBUTES
+appearance - appearance of the element - auto, none, radio, meter, button, listbox, textarea, menulist, checkbox
+- none - removes the default browser appearance of the element
+- auto - applies the default browser appearance of the element
+
+COLOR ATTRIBUTES
+color - text color
+background-color - background color
+accent-color - accent color of the element - used for form elements like checkboxes, radio buttons, and progress bars
+caret-color - color of the text cursor - color name, hex, rgb, rgba, hsl, hsla
+
+COLOR VALUES
+- to define colors, you can either separate them by commas or spaces
+- if there is an alpha channel, you must separate it by using "/"
+- example: rgb(255, 0, 0) or rgb(255 0 0) - red
+- example with alpha channel: rgba(255, 0, 0, 0.5) or rgb(255 0 0 / 0.5) - red with 50% opacity
+rgb() - rgb color - red green blue - between 0 and 255
+- setting equal values of red, green, and blue makes a shade of gray
+hsl() - hsl color - hue saturation lightness - hue is between 0 and 360, saturation and lightness are between 0% and 100%
+- setting saturation to 0% makes a shade of gray
+rgba() - rgba color - alpha channel for opacity - between 0 and 1
+hsla() - hsla color - alpha channel for opacity - between 0 and 1
+# - hex color - hexadecimal. Very useful for gray colors - between 00 and FF for red, green, and blue - #RRGGBB or #RGB
+- A = 10, B = 11, C = 12, D = 13, E = 14, F = 15
+- setting equal values of red, green, and blue makes a shade of gray - #333
+- if values are equal, you can use the shorthand #RGB instead of #RRGGBB
+lab() - lab color - lightness a b
+- a is the green-red axis - negative is green, positive is red - from -128 to 127
+- b is the blue-yellow axis - negative is blue, positive is yellow - from -128 to 127
+lch() - lch color - lightness chroma hue
+- chroma - 0-100 - 0 is gray, 100 is the most saturated color
+oklab() - oklab color. More in tune with the human eye than lab - lightness a b
+oklch() - oklch color. More in tune with the human eye than lch - lightness chroma hue
+- hue - 0-360 degrees
+- 0 - red 
+- 60 - yellow
+- 120 - green
+- 180 - cyan
+- 240 - blue
+- 300 - magenta
+color-mix() - mixes two colors together - color-mix(in <color-mode>, color1 percentage, color2 percentage)
+- color-mix(in srgb, red 50%, blue 50%) - mixes red and blue to make purple
+
+SPECIAL COLOR VALUES 
+transparent - fully transparent color - rgba(0, 0, 0, 0) 
+currentColor - refers to the current color of the element - useful for setting border or outline colors to match the text color 
+AccentColor - the background color of accented user interface controls - accent-color 
+AccentTextColor - text color of accented user interface controls - accent-color 
+ActiveText - text color of active elements - :active 
+Canvas - the background color of the document 
+CanvasText - the text color of the document 
+Field - the background color of input fields - input, textarea, select 
+FieldText - the text color of input fields - input, textarea, select 
+GrayText - the color of disabled text 
+Highlight - the background color of selected text 
+HighlightText - the text color of selected text 
+LinkText - the text color of not visited and not active links - a 
+Mark - the background color of marked text - <mark>, ::selection 
+MarkText - the text color of marked text - <mark> , ::selection 
+SelectedItem - the background color of selected items in a list - option, select, input with type="checkbox" or "radio"
+SelectedItemText - the text color of selected items in a list - option, select, input with type="checkbox" or "radio"
+VisitedText - the text color of visited links - a:visited
+
+FILTER ATTRIBUTES
+filter - filter of the element - blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, opacity, saturate, sepia
+- blur() - blurs the element - length
+- brightness() - adjusts the brightness of the element - percentage
+- contrast() - adjusts the contrast of the element - percentage
+- drop-shadow() - adds a shadow to the element - offset-x offset-y blur-radius spread-radius color
+- grayscale() - converts the element to grayscale - percentage
+- hue-rotate() - rotates the hue of the element - angle
+- invert() - inverts the colors of the element - percentage
+- opacity() - adjusts the opacity of the element - percentage
+- saturate() - adjusts the saturation of the element - percentage
+- sepia() - converts the element to sepia - percentage
+
+BACKGROUND ATTRIBUTES
+background - background of the element - color image position size repeat attachment clip origin
+background-image - background image
+- specifying multiple background images makes them stack on top of each other from first to last - url('image1.png'), url('image2.png')
+background-repeat - background image repeat - repeat, no-repeat, repeat-x, repeat-y
+- specifying multiple repeat values sets repeat for each of the background images - repeat, no-repeat
+background-attachment - background image attachment - scroll, fixed, local
+background-position - background image position - top, bottom, left, right, center, top left, top right, bottom left, bottom right
+background-size - background image size - cover, contain, auto, length, percentage
+- cover - scales the image to cover the entire element
+- contain - scales the image to fit the element
+- specifying multiple sizes sets the size for each of the background images - cover, contain, auto
+background-clip - background image clip - border-box, padding-box, content-box
+background-origin - background image origin - border-box, padding-box, content-box
+
+URL VALUES 
+url('url') - url of the image
+- example: url('images/image.png') 
+- example: url('https://www.example.com/image.png') 
+- example: url(../CSS Site/images/image.png)
+
+MASK ATTRIBUTES
+mask - mask of the element - image position size repeat clip origin
+- with gradient values, transitions between the opacity of the colors
+
+GRADIENT VALUES - put on background-image attribute
+linear-gradient(direction, color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a linear gradient background
+- direction can be "to right/left/top/bottom" or at an angle (e.g., 45deg)
+radial-gradient(shape size at position, color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a radial gradient background
+- positions can be combined like "top left"
+conic-gradient(from angle, color-stop1 [percentage-rotation1], color-stop2 [percentage-rotation2], ...) - creates a conic gradient background
+- angle can be specified in degrees (e.g., 0deg, 90deg)
+
+BOX SHADOW ATTRIBUTES
+box-shadow - shadow of the element - offset-x offset-y blur-radius spread-radius color inset
+- inset - makes the shadow appear inside the element
+
+OPACITY ATTRIBUTES
+opacity - opacity of the element - 0-1 - 0 is transparent, 1 is opaque
+- could also be a percentage - 0% is transparent, 100% is opaque
+- doesn't remove the element from the document flow if transparent
+
+VISIBILITY ATTRIBUTES
+visibility - visibility of the element - visible, hidden, collapse
+- doesn't remove the element from the document flow
+
+WIDTH AND HEIGHT ATTRIBUTES
+width - width of the element
+height - height of the element
+- value:auto - the element takes up the full width/height of the parent element
+- value:fit-content - the element shrinks to fit the content, but will not exceed the width/height of the parent element
+- value:max-content - the element takes up the maximum width/height of the content and will never shrink down
+- value:min-content - the element takes up the minimum width/height of the content and will always be the smallest size possible to fit the content
+- value:stretch - the element takes up the full width/height of the parent element and stretches to fit the content
+max-width - maximum width of the element
+max-height - maximum height of the element
+min-width - minimum width of the element
+min-height - minimum height of the element
+- you can also use min(), max() and clamp() functions to set the width/height and avoid using min/max-width/height
+overflow - overflow of the element - visible, hidden, scroll, auto
+overflow-x - overflow of the element in the x direction - visible, hidden, scroll, auto
+overflow-y - overflow of the element in the y direction - visible, hidden, scroll, auto
+overflow-wrap - overflow of the element - normal, break-word, anywhere
+overflow-scrolling - overflow of the element - auto, touch, manual
+overflow-anchor - overflow of the element - auto, none
+
+BORDER ATTRIBUTES - not inherited
+border - border of the element - width style color
+border-width - width of the border - thin, medium, thick, or a specific size
+border-style - style of the border - none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
+border-color - color of the border - color name, hex, rgb, rgba, hsl, hsla
+border-radius - radius of the border - 0px, 50%, 100% - 0px is a square, 50% is a circle, 100% is a circle with a radius of 100% of the element
+border-top - border of the top of the element - width style color
+border-right - border of the right of the element - width style color
+border-bottom - border of the bottom of the element - width style color
+border-left - border of the left of the element - width style color
+
+OUTLINE ATTRIBUTES - Drawn after the border
+outline - outline of the element - width style color
+outline-width - width of the outline - thin, medium, thick, or a specific size
+outline-style - style of the outline - none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
+outline-color - color of the outline - color name, hex, rgb, rgba, hsl, hsla
+outline-offset - offset of the outline - 0px, 50%, 100% - 0px is a square, 50% is a circle, 100% is a circle with a radius of 100% of the element
+outline-radius - radius of the outline - 0px, 50%, 100% - 0px is a square, 50% is a circle, 100% is a circle with a radius of 100% of the element
+
+FONT ATTRIBUTES
+font - font of the element - size style weight family
+- value:inherit - inherits the font of the parent element
+font-size - size of the font - browser default:16px
+font-family - font of the element - browser default: sans-serif
+- setting up a list of fonts to use if the first font is not available - font1, font2, font3
+- always available fonts - monospace, serif, sans-serif, cursive, fantasy
+- if a font's name has a space in it, it must be in quotes - 'font name',"font name"
+font-style - style of the font - normal, italic, oblique
+font-weight - weight of the font - normal, bold, bolder, lighter, 100-900
+font-variant - variant of the font - normal, small-caps
+font-stretch - stretch of the font - normal, condensed, expanded, ultra-condensed, ultra-expanded, extra-condensed, extra-expanded, semi-condensed, semi-expanded
+
+MARGIN ATTRIBUTES
+margin - margin of the element - top, right, bottom, left
+- value value - changes the margin of top-bottom and left-right in that order
+- value value value - changes the margin of top, right-left, bottom in that order
+- value value value value - changes the margin of top, right, bottom, left in that order
+margin-top - top margin of the element
+margin-right - right margin of the element
+margin-bottom - bottom margin of the element
+margin-left - left margin of the element
+- value: auto - auto margin - centers the element in the parent element
+margin-inline - inline margin of the element - left right
+
+MARGIN BLOCK ATTRIBUTES - for vertical writing modes
+margin-block - block margin of the element - top bottom
+margin-block-start - start block margin of the element - top
+margin-block-end - end block margin of the element - bottom
+
+MARGIN INLINE ATTRIBUTES - for vertical writing modes
+margin-inline - inline margin of the element - left right
+margin-inline-start - start inline margin of the element - left
+margin-inline-end - end inline margin of the element - right
+
+PADDING ATTRIBUTES - inherited
+padding - padding of the element - top, right, bottom, left
+- value value - changes the padding of top-bottom and left-right in that order
+- value value value - changes the padding of top, right-left, bottom in that order
+- value value value value - changes the padding of top, right, bottom, left in that order
+padding-top - top padding of the element 
+padding-right - right padding of the element 
+padding-bottom - bottom padding of the element 
+padding-left - left padding of the element
+- value: auto - auto padding - centers the element in the parent element
+padding-inline - inline padding of the element - left right
+
+PADDING BLOCK ATTRIBUTES - for vertical writing modes
+padding-block - block padding of the element - top bottom
+padding-block-start - start block padding of the element - top
+padding-block-end - end block padding of the element - bottom
+
+PADDING INLINE ATTRIBUTES - for vertical writing modes
+padding-inline - inline padding of the element - left right
+padding-inline-start - start inline padding of the element - left
+padding-inline-end - end inline padding of the element - right
+
+MIN AND MAX FUNCTIONS 
+min(value, value, ...) - sets a minimum value for the element whichever value is the smallest of the provided. - most often used with one constant and one variable to constrain it to that minimum value - min(relative, const) 
+max(value, value, ...) - sets a maximum value for the element whichever value is the largest of the provided. - most often used with one constant and one variable to constrain it to that maximum value - max(relative, const) 
+clamp(min, preferred, max) - sets a value that is at least min, but prefers preferred, and is at most max - most often used with two constants for min and max, and a variable for preferred 
+
+CALC FUNCTION 
+calc(expression) - calculates a value based on the expression provided - used to combine different units or perform calculations with values
+
+TEXT ATTRIBUTES
+text-transform - transform of the text - none, capitalize, uppercase, lowercase, full-width, full-size-kana, small-caps
+text-align - alignment of the text - left, right, center, justify, start, end
+text-align-last - alignment of the last line of the text - auto, left, right, center, justify, start, end
+vertical-align - vertical alignment of the text - baseline, sub, super, text-top, text-bottom, middle, top, bottom
+text-indent - indentation of the text - length, percentage
+text-justify - justification of the text - none, inter-word, inter-character, all-characters
+text-overflow - overflow of the text - clip, ellipsis, string
+letter-spacing - spacing of the letters - normal, length, percentage
+word-spacing - spacing of the words - normal, length, percentage
+
+TEXT DECORATION ATTRIBUTES
+text-decoration - decoration of the text - color style thickness line
+text-decoration-color - color of the text decoration - color name, hex, rgb, rgba, hsl, hsla
+text-decoration-style - style of the text decoration - solid, double, dotted, dashed, wavy
+text-decoration-thickness - thickness of the text decoration - auto, length, percentage
+text-decoration-line - line of the text decoration - none, underline, overline, line-through, blink
+text-decoration-skip - skip of the text decoration - none, objects, spaces, ink, all
+
+TEXT SHADOW ATTRIBUTES
+text-shadow - shadow of the text - offset-x offset-y blur-radius color
+text-shadow-color - color of the text shadow - color name, hex, rgb, rgba,hsl,hsla 
+text-shadow-offset-x - x offset of the text shadow - length, percentage 
+text-shadow-offset-y - y offset of the text shadow - length, percentage 
+text-shadow-blur-radius - blur radius of the text shadow - length,
+percentage
+
+LINE HEIGHT ATTRIBUTES
+line-height - height of the line - normal, length, percentage
+line-height-step - step of the line height - normal, length, percentage
+line-height-align - alignment of the line height - auto, baseline, sub, super, top, text-top, middle, bottom, text-bottom
+line-height-shift - shift of the line height - auto, baseline, sub, super, top, text-top, middle, bottom, text-bottom
+
+SPACING ATTRIBUTES
+letter-spacing - spacing of the letters - normal, length, percentage
+word-spacing - spacing of the words - normal, length, percentage
+word-break - break of the words - normal, break-all, keep-all, break-word
+word-wrap - wrap of the words - normal, break-word, anywhere
+white-space - white space of the element - normal, nowrap, pre, pre-wrap, pre-line, break-spaces
+white-space-collapse - collapse of the white space - normal, pre, pre-wrap, pre-line, break-spaces
+break-inside - break inside the element - auto, avoid, avoid-page, avoid-region, avoid-column, avoid-region
+break-before - break before the element - auto, always, avoid, left, right, page, column, region
+break-after - break after the element - auto, always, avoid, left, right, page, column, region
+
+TABLE ATTRIBUTES
+caption-side - side of the caption - top, bottom
+
+CURSOR ATTRIBUTES
+cursor - cursor of the element - auto, default, none, context-menu, help, pointer, progress, wait, cell, crosshair, text, vertical-text, alias, copy, move, no-drop, not-allowed, grab, grabbing, all-scroll, col-resize, row-resize, n-resize, e-resize, s-resize, w-resize, ne-resize, nw-resize, se-resize, sw-resize
+cursor: url('url'), auto - sets a custom cursor image - url is the path to the image, auto is the default cursor
+
+SCROLLING ATTRIBUTES
+scroll-behavior - behavior of the scroll - auto, smooth
+- defined at the html element
+scroll-snap-type - type of the scroll snap - none, x, y, block, inline, both
+scroll-snap-align - alignment of the scroll snap - none, start, end, center, block-start, block-end, inline-start, inline-end
+scroll-snap-stop - stop of the scroll snap - auto, always
+scroll-snap-coordinate - coordinate of the scroll snap - auto, x, y
+scroll-snap-destination - destination of the scroll snap - auto, x, y
+scroll-padding - padding of the scroll - top, right, bottom, left
+scroll-margin - margin of the scroll - top, right, bottom, left
+
+LIST STYLE ATTRIBUTES - the list's bullets
+list-style - style of the list - type position image
+list-style-type - type of the list - none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, georgian
+list-style-position - position of the list - inside, outside
+list-style-image - image of the list - url('url'), none
+- setting up a list of images to use if the first image is not available - image1, image2, image3
+
+LIST MARKER CONTENT ATTRIBUTES - ::marker
+content - content of the list. Replaces the default marker with the content
+- You can concatenate strings like this: "text" "more text"
+
+DISPLAY ATTRIBUTES
+display - display of the element - parent_display child_display - block, inline, inline-block, flex, grid, table, table-row, table-cell, none, inherit, initial, unset
+- block - the element is a block element - takes up the full width of the parent element
+- inline - the element is an inline element - takes up only the width of the content
+- inline-block - the element is an inline-block element - takes up only the width of the content, but act as a separate page element
+- flow - the element is a block element - takes up the full width of the parent element
+- flow-root - the element is a block element - takes up the full width of the parent element and creates a new block formatting context like setting different float values
+- contents - the element is not displayed - removed from the document flow, but the children are displayed
+- flex - the element is a flex container - allows for flexible layouts
+- inline-flex - the element is an inline flex container - allows for flexible layouts, but takes up only the width of the content
+- grid - the element is a grid container - allows for grid layouts
+- table - the element is a table - allows for table layouts
+- table-row - the element is a table row - allows for table row layouts
+- table-cell - the element is a table cell - allows for table cell layouts
+- none - the element is not displayed - removed from the document flow
+
+FLOAT ATTRIBUTES 
+float - moves the element to a specific side of the page - left, right, none 
+clear - clears content from a specific side of the element - left, right, both, none
+
+DISPLAY FLEX ATTRIBUTES
+
+ALIGNMENT:
+flex-flow: row wrap - sets the flex direction to row and the flex wrap to wrap
+flex-direction - direction of the flex items - row, row-reverse, column, column-reverse
+- if the value is column or column-reverse, the main axis is vertical and the cross axis is horizontal
+flex-wrap - wrap of the flex items - nowrap, wrap, wrap-reverse
+gap - gap between the flex items on the main axis - length, percentage
+order - order of the flex item - -9999 to 9999
+- moves the element to a specific order in the flex container left or right
+
+BEHAVIOR:
+flex - behavior of the flex items on the main axis - grow shrink basis
+- flex: 1 - sets the flex-grow to 1, flex-shrink to 1, and flex-basis to 0
+- flex: auto - sets the flex-grow to 1, flex-shrink to 1, and flex-basis to auto
+flex-grow - grow ratio of the flex items on the main axis - 0-1
+- setting the value to 1 will allow the flex item to fill the available space
+flex-shrink - shrink ratio of the flex items on the main axis - 0-1
+- setting the value to 1 will allow the flex item to shrink to fit the container
+flex-basis - basis of the flex items on the main axis - auto, length, percentage
+- almost the same as min-width
+- flex-basis: auto - the flex item will take up the width of its content
+- flex-basis: 0 - the flex item will take up a width of 0 and will grow to fill the available space
+
+FLEX AXISES
+MAIN - the axis along which the flex items are laid out - horizontal for row, vertical for column
+CROSS - the axis perpendicular to the main axis - vertical for row, horizontal for column
+
+FLEX ALIGNMENT ATTRIBUTES 
+place-content - alignment of the content along the main axis - align-content justify-content 
+align-content - alignment of the content's container as a whole along the cross axis. Requires flex-wrap to work - start, end, flex-start, flex-end, center, space-between, space-around, space-evenly, stretch
+justify-content - alignment of the content along the main axis - start, end, flex-start, flex-end, center, space-between,space-around, space-evenly, stretch 
+place-items - alignment of the content along the cross axis - align-items 
+align-items - alignment of the individual items in the content's container along the cross axis - start, end,flex-start, flex-end, center, baseline, stretch 
+place-self - alignment of a single element - align-self align-self - alignment of a single element - auto, start, end,
+flex-start, flex-end, center, baseline, stretch 
+gap - gap between the flex items on the main axis - length, percentage
+
+FLEX ALIGNMENT VALUES 
+space-between - spaces the items evenly with the first item at the start and the last item at the end 
+space-around - spaces the items evenly, with the first item at the start and the last item at the end, with equal space around each item 
+space-evenly - spaces the items evenly, with equal space around each item 
+stretch - stretches the items to fill the container
+
+DISPLAY GRID ATTRIBUTES
+grid-template - creates a grid layout - template_rows / template_columns
+grid-template-areas - specifies grid areas as headers - "area area" / "area area"
+grid-area - specifies grid areas as cells - name
+grid-template-columns - specifies grid columns as headers - col col col ...
+grid-auto-rows - specifies grid rows as cells - row row row ...
+grid-template-rows - specifies grid rows as headers - row row row ...
+grid-auto-columns - specifies grid columns as cells - col col col ...
+gap - gap between the grid items - row column
+row-gap - gap between the rows - length, percentage
+column-gap - gap between the columns - length, percentage
+grid-area - area of the grid - grid-row-start / grid-column-start /grid-row-end / grid-column-end
+grid-column - column of the grid - start / end
+grid-column-start - start of the grid column - auto, number, span number
+grid-column-end - end of the grid column - auto, number, span number
+grid-row - row of the grid - start / end
+grid-row-start - start of the grid row - auto, number, span number
+grid-row-end - end of the grid row - auto, number, span number
+order - order of the grid item - -9999 to 9999
+- moves the element to a specific order in the flex container left or right
+
+GRID AXISES 
+MAIN - the horizontal axis
+CROSS - the vertical axis
+
+GRID ALIGNMENT ATTRIBUTES
+place-content - alignment of the content along the main axis - align-content justify-content
+align-content - alignment of the content's container as a whole along the cross axis - start, end, flex-start, flex-end, center, space-between, space-around, space-evenly, stretch
+justify-content - alignment of the content along the main axis - start, end, flex-start,
+flex-end, center, space-between, space-around, space-evenly, stretch
+place-items - alignment of the content along the cross axis - align-items justify-items
+align-items - alignment of the individual items in the content's container along the cross axis - start, end, flex-start, flex-end, center, baseline, stretch
+justify-items - alignment of the individual items in the content's container along the main axis - start, end, flex-start, flex-end, center, stretch
+place-self - alignment of a single element - align-self justify-self
+align-self - alignment of a single element along the cross axis - auto, start, end, flex-start, flex-end, center, baseline, stretch
+justify-self - alignment of a single element along the main axis - auto, start, end, flex-start, flex-end, center, stretch
+
+GRID MINMAX FUNCTION 
+minmax(min-width, max-width) - defines a column that is at least min-width wide but can grow to max-width 
+
+GRID REPEAT FUNCTION 
+repeat(x, y) - repeats x times a y value
+
+FLOAT ATTRIBUTES
+float - moves the element to a specific side of the page - left, right, none
+clear - clears content from a specific side of the element - left, right, both, none
+
+POSITION ATTRIBUTES
+position - position of the element - static, relative, absolute, fixed, sticky
+- static - the element is positioned according to the normal flow of the document
+- relative - the element is positioned relative to its normal position
+- absolute - the element is positioned relative to its nearest positioned ancestor
+- fixed - the element is positioned relative to the viewport and does not move when scrolled
+- sticky - the element is positioned relative to its nearest scrolling ancestor
+z-index - stacking order of the element - auto, number
+- higher numbers appear on top of lower numbers
+isolation - determines whether the element creates a new stacking context - auto, isolate
+
+TRANSFORM ATTRIBUTES
+transform - transforms the element - translate, rotate, scale, skew
+- to apply multiple transforms, separate them with a space 
+- transform: value value value ...;
+transform-origin - origin of the transform - x y z
+- x y z are percentages or lengths from the top left corner of the element
+transform-style - style of the transform - flat, preserve-3d
+
+TRANSFORM FUNCTIONS
+perspective - sets how far an element is from the screen. Smaller values appear closer to the screen and it rotates more and more vertically as the value grows and gives it a 3d look - length, percentage
+perspective-origin - sets from where the perspective is viewed - x y
+translate - translates the element - x y
+translate3d - translates the element in 3d - x y z
+translateX - translates the element in the x direction - length, percentage
+translateY - translates the element in the y direction - length, percentage
+translateZ - translates the element in the z direction - length, percentage
+rotate - rotates the element in the z direction - angle
+rotate3d - rotates the element in 3d - x y z angle
+rotateX - rotates the element in the x direction - angle
+rotateY - rotates the element in the y direction - angle
+rotateZ - rotates the element in the z direction - angle
+scale - scales the element - x y
+scale3d - scales the element in 3d - x y z
+scaleX - scales the element in the x direction - number
+scaleY - scales the element in the y direction - number
+scaleZ - scales the element in the z direction - number
+skew - skews the element - x y
+skewX - skews the element in the x direction - angle
+skewY - skews the element in the y direction - angle
+skewZ - skews the element in the z direction - angle
+matrix - transforms the element using a matrix 
+- a b c d e f
+- scaleX(a) skewX(c)  translateX(e)          
+- skewY(b)  scaleY(d) translateY(f)
+- 0      0      1
+matrix3d - transforms the element using a 3d matrix 
+- a b c d e f g h i j k l m n o p
+- scaleX(a)     skewXY(b)     skewXZ(c)      perspectiveX(d) 
+- skewYX(e)     scaleY(f)     skewYZ(g)      perspectiveY(h)
+- skewZX(i)     skewZY(j)     scaleZ(k)      perspectiveZ(l)
+- translateX(m) translateY(n) translateZ(o)  1(p)
+
+
+TRANSITION ATTRIBUTES
+transition - transition of the element - property duration timing-function delay
+transition-property - property of the transition - all, property1, property2, ...
+transition-duration - duration of the transition - time
+transition-timing-function - timing function of the transition - linear, ease, ease-in, ease-out, ease-in-out, steps, step-start, step-end, cubic-bezier
+- steps - divides the transition into a number of steps - steps(number, [start|end])
+- start|end specifies whether the transition starts or ends at the beginning of the step. Default is end.
+- step-start - transition starts at the beginning of the step
+- step-end - transition ends at the end of the step
+- cubic-bezier - defines a custom timing function - cubic-bezier(x1, y1, x2, y2)
+- x1 and x2 must be in the range [0, 1] and define the time of the transition
+- y1 and y2 can be any value and define the speed of the transition
+transition-delay - delay of the transition - time
+
+ANIMATION ATTRIBUTES
+animation - animation of the element - duration timing-function delay iteration-count direction fill-mode play-state name
+- to apply multiple animations, separate them with a comma
+animation-name - name of the animation - name
+animation-duration - duration of the animation - time
+animation-timing-function - timing function of the animation - linear, ease, ease-in, ease-out, ease-in-out, steps
+animation-delay - delay of the animation - time
+animation-iteration-count - iteration count of the animation - number, infinite
+animation-direction - direction of the animation - normal, reverse, alternate, alternate-reverse
+animation-fill-mode - fill mode of the animation - none, forwards, backwards, both
+animation-play-state - play state of the animation - running, paused
+
+COLUMN ATTRIBUTES
+columns - number of columns and width of the columns in the element 
+- width count
+column-count - number of columns in the element - auto, number
+column-width - width of the columns in the element - length, percentage
+column-fill - fill of the columns in the element - auto, balance, balance-all
+column-gap - gap between the columns in the element - length, percentage
+column-span - span of the columns in the element - none, all
+column-rule - rule of the columns in the element - width style color
+column-rule-width - width of the column rule - length, percentage
+column-rule-style - style of the column rule - none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
+column-rule-color - color of the column rule - color name, hex, rgb, rgba, hsl, hsla
+
+BREAK ATTRIBUTES
+white-space - white space of the element - normal, nowrap,
+pre, pre-wrap, pre-line, break-spaces
+break-inside - break inside the element - auto, avoid, avoid-page, avoid-region, avoid-column, avoid-region
+break-before - break before the element - auto, always, avoid, left, right, page, column, region
+break-after - break after the element - auto, always, avoid, left, right, page, column, region
+
+FORM ATTRIBUTES
+accent-color - accent color of the element - used for form elements like checkboxes, radio buttons, and progress bars 
+caret - color and shape of the text cursor - caret-color caret-shape
+caret-color - color of the text cursor - color name, hex, rgb, rgba, hsl, hsla
+caret-shape - shape of the text cursor - block, bar, underscore
+
+FORM TEXTAREA ATTRIBUTES
+resize - allows the user to resize the textarea - none, both, horizontal, vertical
+
+ATTRIBUTE FUNCTION
+attr(attribute) - retrieves the value of an attribute of the element
+
+COLOR SCHEME
+color-scheme - indicates which color schemes are used in the element, separated by spaces - light, dark, normal
+
+LIGHT-DARK FUNCTION
+light-dark(light-value, dark-value) - sets a value based on whether the user has a light or dark theme enabled. Requires the color-scheme attribute to be set.
+
+QUERIES
+@media - used to apply styles based on the media type or features of the device
+@supports - used to apply styles based on whether the browser supports a specific feature
+@import - used to import styles from another stylesheet
+@keyframes - used to define animations
+@font-face - used to define custom fonts
+@page - used to apply styles to printed pages
+@viewport - used to apply styles to the viewport of the device
+@container - used to apply styles based on the size of a container element
+@layer - used to define layers of styles that can be applied in a specific order
+@namespace - used to define a namespace for the styles
+@counter-style - used to define custom counter styles for lists
+@property - used to define custom properties
+@if - used to apply styles based on a condition
+
+COUNTERS
+counter-reset - resets a counter to a specific value - name value
+counter-increment - increments a counter by a specific value - name value
+counter(name) - retrieves the value of a counter
+counters(name, separator) - retrieves the value of a counter with a separator between each value
+
+CONTAIN ATTRIBUTE
+contain - isolates the a specific style of the element so that it is not affected by others - none, strict, content, size, layout, style, paint
+
+ANCHORS
+anchor-name - defines an anchor point for the element - name
+- the name starts with --
+position-anchor - positions the element relative to an anchor point - name x y
+anchor(top left right bottom center) - positions the element relative to an anchor point - top, left, right, bottom, center
+*/
