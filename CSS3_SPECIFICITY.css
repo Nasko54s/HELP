@@ -1,0 +1,16 @@
+/* 
+    00000 - [layer][!important tag][#id][.class or :pseudo-class][element or ::pseudo-element]
+    - the higher the specificity, the harder to overwrite the selector/attribute  
+    - element - 1
+    - class - 10
+    - id - 100
+    - !important on attribute - 1000(roughly)
+    - @layer - 10000(roughly)
+    - layers can be ordered and the their specificity is counted from the last to the first
+    - @layer lessSpecific, moreSpecific;
+    - the document(or user styles layer) is always the most specific and any css layers are less specific than it
+    - there are 3 layers by default: 
+    - user-agent styles - the browser's default stylesheets - least specific
+    - user styles - the css stylesheets you link to the document
+    - author styles - styles in the html document by using the styles attribute - most specific
+*/
