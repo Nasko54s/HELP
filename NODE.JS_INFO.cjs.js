@@ -216,6 +216,12 @@
 
 // readStream.once("end", () => console.log("Data Reading Finished!"));
 
+// readStream.on("error", (err) => {
+//     if (err){
+//         console.error(err);
+//     }
+// })
+
 //? Write Stream
 
 // const writeStream = fs.createWriteStream(writePath);
@@ -321,3 +327,54 @@
 // }, signature);
 // console.log(`Signature: ${signature.toString("hex")}`);
 // console.log(`Is Verified: ${isVerified}`);
+
+//? Directories
+const fs = require("fs");
+
+fs.mkdir("dir1",(err) => {
+    if (err) console.error(err);
+    console.log("Directory created!");
+});
+
+fs.mkdir("dir1", {recursive: true}, (err) => {
+    if (err) console.error(err);
+    console.log("Directory created!");
+});
+
+const isRecursive = fs.mkdirSync("dir2", {recursive: true});
+
+//* The mkdir function also accepts an "options" object between the dirname and the callback(if there is one) 
+//* - {recursive: true/false, mode: 0oXYZ}
+//* Recursive allows subdirectories to be created if the path has sublevels and won't throw an error if the directory already exists
+//* Mode specifies how access rules are divided between owner, group and other. Accepts an octal number
+//* 0oXYZ - octal number - 0o[owner][group][other]
+//* X → owner permissions  
+//* Y → group permissions
+//* Z → others (world) permissions
+//* Each digit is a sum of:
+//* 4 = read (r)
+//* 2 = write (w)
+//* 1 = execute (x)
+//* Therefore:
+//* 7 = read + write + execute (rwx)
+//* 6 = read + write (rw-)
+//* 5 = read + execute (r-x)
+//* 4 = read only (r--)
+//* 0 = no permissions (---)
+
+fs.rm("dir1", (err) => {
+    if (err) console.error(err);
+    console.log("Directory removed!");
+})
+
+fs.rm("dir1", {recursive: true, force: true}, (err) => {
+    if (err) console.error(err);
+    console.log("Directory removed!");
+})
+
+fs.rm("dir2", {recursive: true, retryDelay: 300, maxRetries: 5}, (err) => {
+    if (err) console.error(err);
+    console.log("Directory removed!");
+})
+
+const returnsUndefined = fs.rmSync("dir2", {recursive: true, force: true});
