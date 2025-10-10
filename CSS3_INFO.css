@@ -11,10 +11,18 @@ PRIORITY - SELECTORS
    p ~ h1 - selects all h1 elements that are siblings of p elements, but not necessarily direct children
 6. #myid - selects the element with the id of myid
 7 .myclass - selects all elements with the class of myclass
-8. p,h1 - selects all elements of that types
+8. p, h1 - selects all elements of that types
 9. * - selects all elements
 
-PSEUDO-CLASS ATTRIBUTE SELECTORS
+SPECIAL SELECTORS
+* + * - selects all elements that are immediately after any other element
+- h1 + p - selects all p elements that are immediately after an h1 element
+* ~ * - selects all elements that are after any other element
+- h1 ~ p - selects all p elements that are after an h1 element, meaning there could be other elements in between
+* > * - selects all elements that are direct children of any other element
+- div > p - selects all p elements that are direct children of a div element
+
+ATTRIBUTE SELECTORS
 p[attribute] - selects all p elements with the attribute of attribute
 p[attribute=value] - selects all p elements with the attribute of attribute and the value of value
 p[attribute^=value] - selects all p elements with the attribute of attribute that starts with the value of value
@@ -126,6 +134,13 @@ CSS3 UTILITY CLASSES
 .nowrap{
    white-space: nowrap;
 }
+
+CSS3 BOX SIZING
+box-sizing - defines how the width and height of an element are calculated - content-box, border-box, padding-box, margin-box
+- content-box - default value - width and height only includes the content
+- border-box - width and height includes the content, padding, and border - most often used
+- padding-box - width and height includes the content and padding
+- margin-box - width and height includes the content, padding, border, and margin
 
 CSS3 VARIABLES - defined in the :root selector
 --variable-name: value; - defines a variable
@@ -270,12 +285,13 @@ mask - mask of the element - image position size repeat clip origin
 - with gradient values, transitions between the opacity of the colors
 
 GRADIENT VALUES - put on background-image attribute
-linear-gradient(direction, color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a linear gradient background
+linear-gradient(direction [color-space], color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a linear gradient background
 - direction can be "to right/left/top/bottom" or at an angle (e.g., 45deg)
-radial-gradient(shape size at position, color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a radial gradient background
+radial-gradient(shape size at position [color-space], color-stop1 [percentage-position1], color-stop2 [percentage-position2], ...) - creates a radial gradient background
 - positions can be combined like "top left"
-conic-gradient(from angle, color-stop1 [percentage-rotation1], color-stop2 [percentage-rotation2], ...) - creates a conic gradient background
+conic-gradient(from angle [color-space], color-stop1 [percentage-rotation1], color-stop2 [percentage-rotation2], ...) - creates a conic gradient background
 - angle can be specified in degrees (e.g., 0deg, 90deg)
+- color-space can be "in rgb", "in oklch" etc.
 
 BOX SHADOW ATTRIBUTES
 box-shadow - shadow of the element - offset-x offset-y blur-radius spread-radius color inset
@@ -588,6 +604,9 @@ position - position of the element - static, relative, absolute, fixed, sticky
 z-index - stacking order of the element - auto, number
 - higher numbers appear on top of lower numbers
 isolation - determines whether the element creates a new stacking context - auto, isolate
+
+WILL-CHANGE ATTRIBUTE
+will-change - specifies whether an attribute of an element will be changed. Useful with animations. - property, property, etc.
 
 TRANSFORM ATTRIBUTES
 transform - transforms the element - translate, rotate, scale, skew
