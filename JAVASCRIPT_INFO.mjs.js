@@ -15,7 +15,7 @@
 
 let a;
 
-// a = "My name is Atanas";
+//a = "My name is Atanas";
 // a = 'My name is Atanas';
 //a = 5;
 // a = new Object(); // or "{}" (recommended)
@@ -28,7 +28,7 @@ let res;
 // res = `Uses the value of a via string interpolation, which is ${a}. String interpolation in js is marked with backticks instead of normal or double quotes and a dollar sign is put before the interpolated value!`;
 // res = a.replace("is","was");
 // res = a.split(' ');
-// res = a.slice(3, 7);
+//res = a.slice(3, 7);
 // res = a.substring(3, 7);
 // res = a[4];
 // res = a.concat(a);
@@ -296,7 +296,7 @@ let res;
 // const user = new UserClass('email@email.com','Nasko');
 // console.log(user.greetings());
 
-import data from "./json_data.js";
+// import data from "./json_data.js";
 
 // Performs an action on each of the elements of the array without modifying the original values.
 // data.forEach(x => console.log(x));
@@ -324,6 +324,26 @@ import data from "./json_data.js";
 
 // console.log(reducedPosts);
 
+// DOM Manipulation
+
+// Selecting HTML Elements
+// You can select html elements by using either .getElementsByClassName(className)/Id(id) etc. or .querySelector(CSS_Selector)/querySelectorAll(CSS_Selector)
+// querySelectorAll returns all elements while querySelector returns only the first match
+
+// Creating HTML Elements
+// You can create an HTML element by using document.createElement(HTMLElement)
+
+// Event Listeners
+// You can add them on components via .addEventListener(event, functionObj, callback)
+// functionObj is a reference to the function, not calling it
+// Example: "Sum" instead of "Sum(a, b)"
+
+// const button = document.querySelector("button");
+// button.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   logic();
+// });
+
 // Transfering data across pages
 
 // Way 1 - using href parameters
@@ -349,15 +369,15 @@ import data from "./json_data.js";
 
 // Promises, async and await, thenables
 
-const myPromise = new Promise((resolve, reject) => {
-  const success = true; // Simulate success or failure
+// const myPromise = new Promise((resolve, reject) => {
+//   const success = true; //* Simulate success or failure
 
-  if (success) {
-    resolve("Promise resolved successfully!");
-  } else {
-    reject("Promise rejected!");
-  }
-});
+//   if (success) {
+//     resolve("Promise resolved successfully!");
+//   } else {
+//     reject("Promise rejected!");
+//   }
+// });
 
 // Promises are used to handle asynchronous operations in JavaScript. They represent a value that may be available now, in the future, or never.
 // A promise can be in one of three states: pending, fulfilled, or rejected.
@@ -366,31 +386,31 @@ const myPromise = new Promise((resolve, reject) => {
 // You call reject(error) when the operation fails and you want to pass the error.
 // You can attach handlers to the promise using the then() and catch() methods.
 // The then() method is called when the promise is fulfilled, and it receives the resolved value as an argument.
-myPromise.then((value) => {
-  console.log(value); // "Promise resolved successfully!"
-});
-// The catch() method is called when the promise is rejected, and it receives the error as an argument.
-myPromise.catch((error) => {
-  console.error(error); // "Promise rejected!"
-});
+// myPromise.then((value) => {
+//   console.log(value); //* "Promise resolved successfully!"
+// });
+// //* The catch() method is called when the promise is rejected, and it receives the error as an argument.
+// myPromise.catch((error) => {
+//   console.error(error); //* "Promise rejected!"
+// });
 
 // Promises can be chained together using multiple then() calls. Each then() returns a new promise, allowing for sequential asynchronous operations.
-myPromise
-  .then((value) => {})
-  .then(() => {})
-  .catch((error) => {});
+// myPromise
+//   .then((value) => {})
+//   .then(() => {})
+//   .catch((error) => {});
 
 // Async functions are a more concise way to work with promises. They allow you to write asynchronous code that looks synchronous.
-async function myAsyncFunction() {
-  try {
-    const value = await myPromise; // The await keyword pauses the execution of the async function until the promise is resolved or rejected.
-    console.log(value); // "Promise resolved successfully!"
-  } catch (error) {
-    console.error(error); // "Promise rejected!"
-  }
-}
+// async function myAsyncFunction() {
+//   try {
+//     const value = await myPromise; //* The await keyword pauses the execution of the async function until the promise is resolved or rejected.
+//     console.log(value); //* "Promise resolved successfully!"
+//   } catch (error) {
+//     console.error(error); //* "Promise rejected!"
+//   }
+// }
 
-myAsyncFunction();
+// myAsyncFunction();
 
 // The await keyword can only be used inside async functions. It makes the function wait for the promise to resolve and returns the resolved value.
 // If the promise is rejected, an error is thrown, which can be caught using a try-catch block.
@@ -399,36 +419,36 @@ myAsyncFunction();
 // Fetch API
 
 // The Fetch API provides a modern way to make network requests in JavaScript. It is built on promises and provides a more powerful and flexible feature set than the older XMLHttpRequest.
-fetch("https://jsonplaceholder.typicode.com/posts/1")
-  .then((response) => {}) // The fetch() function takes a URL as an argument and returns a promise that resolves to the Response object representing the response to the request.
-  .then((data) => {}) // The Response object has several methods to read the response body, such as json(), text(), blob(), etc. These methods also return promises.
-  .catch((error) => {}); // You can handle errors using the catch() method, which is called if the fetch operation fails (e.g., network error).
+// fetch("https://jsonplaceholder.typicode.com/posts/1")
+//   .then((response) => {}) //* The fetch() function takes a URL as an argument and returns a promise that resolves to the Response object representing the response to the request.
+//   .then((data) => {}) //* The Response object has several methods to read the response body, such as json(), text(), blob(), etc. These methods also return promises.
+//   .catch((error) => {}); //* You can handle errors using the catch() method, which is called if the fetch operation fails (e.g., network error).
 
 // You can also use async/await syntax with the Fetch API for cleaner and more readable code.
-async function fetchData() {
-  try {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/posts/1"
-    );
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-}
+// async function fetchData() {
+//   try {
+//     const response = await fetch(
+//       "https://jsonplaceholder.typicode.com/posts/1"
+//     );
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }
 
-fetchData();
+// fetchData();
 
 // ADVANCED USAGE
 // The Fetch API also allows you to customize the request by passing an optional second argument to the fetch() function. This argument is an object that can contain various options, such as method, headers, body, etc.
-fetch("https://jsonplaceholder.typicode.com/posts", {
-  method: "POST", // HTTP method (GET, POST, PUT, DELETE, etc.)
-  headers: { "Content-Type": "application/json" }, // Request headers
-  body: JSON.stringify({ title: "foo", body: "bar", userId: 1 }), // Request body (for POST, PUT, etc.)
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Error:", error));
+// fetch("https://jsonplaceholder.typicode.com/posts", {
+//   method: "POST", //* HTTP method (GET, POST, PUT, DELETE, etc.)
+//   headers: { "Content-Type": "application/json" }, //* Request headers
+//   body: JSON.stringify({ title: "foo", body: "bar", userId: 1 }), //* Request body (for POST, PUT, etc.)
+// })
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error:", error));
 
 // METHOD: GET - Requests data from a specified resource
 // METHOD: POST - Submits data to be processed to a specified resource
@@ -460,3 +480,28 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 // - application/xml - XML data
 // - multipart/form-data - Form data that includes files
 // - application/x-www-form-urlencoded - Form data encoded as key-value pairs
+
+// Sets
+const set = new Set([1, 2, 3])
+set.add(4)
+set.add(5)
+console.log(set)
+set.add(5)
+set.add(6)
+// console.log(set)
+
+// for (const x of set) {
+//     console.log(x)
+// }
+
+// console.log(set instanceof Set)
+// console.log(set.has(4))
+// console.log(set.delete(3))
+// console.log(set.values())
+// set.clear()
+// console.log(set.keys())
+// console.log(set.values())
+// console.log(set.entries())
+// console.log(set.size)
+// set.forEach(item => console.log(item))
+

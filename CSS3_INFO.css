@@ -156,13 +156,14 @@ CSS3 CUSTOM PROPERTIES - defined in the file
 }
 
 ALL ATTRIBUTE
-- all - resets all properties of the selector to a specific value - initial, inherit, unset, revert
+- all - resets all properties of the selector to a specific value - initial, inherit, unset, revert, revert-layer
 
 CSS3 GLOBAL VALUES
 inherit - inherits the value from the parent element
 initial - sets the value to the default value of the property
 unset - if the property is inherited, it inherits the value from the parent element, otherwise it sets the value to the default value of the property
 revert - resets the property to the value established by the user-agent stylesheet or by user styles if any exist
+revert-layer - resets the property to the value established by the user-agent stylesheet or by user styles in a specific layer if any exist
 
 HIDING ELEMENTS
 - use left/right/top/bottom: +-9999px to hide an element off the screen but still have it in the document flow
@@ -484,20 +485,36 @@ content - content of the list. Replaces the default marker with the content
 - You can concatenate strings like this: "text" "more text"
 
 DISPLAY ATTRIBUTES
-display - display of the element - parent_display child_display - block, inline, inline-block, flex, grid, table, table-row, table-cell, none, inherit, initial, unset
-- block - the element is a block element - takes up the full width of the parent element
-- inline - the element is an inline element - takes up only the width of the content
-- inline-block - the element is an inline-block element - takes up only the width of the content, but act as a separate page element
-- flow - the element is a block element - takes up the full width of the parent element
-- flow-root - the element is a block element - takes up the full width of the parent element and creates a new block formatting context like setting different float values
-- contents - the element is not displayed - removed from the document flow, but the children are displayed
-- flex - the element is a flex container - allows for flexible layouts
-- inline-flex - the element is an inline flex container - allows for flexible layouts, but takes up only the width of the content
-- grid - the element is a grid container - allows for grid layouts
-- table - the element is a table - allows for table layouts
+display - display of the element - parent_display(outer) child_display(inner) - block, inline, inline-block, flex, grid, table, table-row, table-cell, none, inherit, initial, unset
+- outer display defines how the element interacts with other elements on the page
+- inner display defines how the children of the element are displayed within the element
+
+OUTER DISPLAY VALUES
+- block - the element is a block element - takes up the full width of the parent element- if used as a single value, it means display: block flow
+- inline - the element is an inline element - takes up only the width of the content- if used as a single value, it means display: inline flow
+- inline-block - the element is an inline-block element - takes up only the width of the content, but act as a separate page element and creates a new block formatting context like setting different float values - if used as a single value, it means display: inline flow
+- flow-root - the element is a block element - takes up the full width of the parent element and creates a new block formatting context like setting different float values - if used as a single value, it means display: block flow-root
+- contents - the element is not displayed - removed from the document flow, but the children are displayed - if used as a single value, it means display: none flow
+- none - the element is not displayed - removed from the document flow
+- run-in - the element is a run-in element - allows for run-in layouts - if used as a single value, it means display: block/inline flow
+
+INNER DISPLAY VALUES
+- flow - inaccessible as a value. Use "revert" instead - the children of the element are displayed as block or inline elements based on their default display values
+- flex - the element is a flex container - allows for flexible layouts and creates a new block formatting context like setting different float values - if used as a single value, it means display: block flex
+- inline-flex - the element is an inline flex container - allows for flexible layouts, but takes up only the width of the content and creates a new block formatting context like setting different float values - if used as a single value, it means display: inline flex
+- grid - the element is a grid container - allows for grid layouts and creates a new block formatting context like setting different float values - if used as a single value, it means display: block grid
+- inline-grid - the element is an inline grid container - allows for grid layouts, but takes up only the width of the content nd creates a new block formatting context like setting different float values - if used as a single value, it means display: inline grid
+- table - the element is a table - allows for table layouts - if used as a single value, it means display: block table
+- inline-table - the element is an inline table - allows for table layouts, but takes up only the width of the content - if used as a single value, it means display: inline table
 - table-row - the element is a table row - allows for table row layouts
 - table-cell - the element is a table cell - allows for table cell layouts
-- none - the element is not displayed - removed from the document flow
+- table-column - the element is a table column - allows for table column layouts
+- table-column-group - the element is a table column group - allows for table column group layouts
+- table-header-group - the element is a table header group - allows for table header group layouts
+- table-row-group - the element is a table row group - allows for table row group layouts
+- table-footer-group - the element is a table footer group - allows for table footer group layouts
+- table-caption - the element is a table caption - allows for table caption layouts
+- list-item - the element is a list item with a ::marker element - allows for list item layouts - if used as a single value, it means display: block flow
 
 FLOAT ATTRIBUTES 
 float - moves the element to a specific side of the page - left, right, none 
@@ -666,7 +683,7 @@ transition-timing-function - timing function of the transition - linear, ease, e
 transition-delay - delay of the transition - time
 
 ANIMATION ATTRIBUTES
-animation - animation of the element - duration timing-function delay iteration-count direction fill-mode play-state name
+animation - animation of the element - name duration timing-function delay iteration-count direction fill-mode play-state
 - to apply multiple animations, separate them with a comma
 animation-name - name of the animation - name
 animation-duration - duration of the animation - time
@@ -676,6 +693,23 @@ animation-iteration-count - iteration count of the animation - number, infinite
 animation-direction - direction of the animation - normal, reverse, alternate, alternate-reverse
 animation-fill-mode - fill mode of the animation - none, forwards, backwards, both
 animation-play-state - play state of the animation - running, paused
+animation-timeline - timeline of the animation - name
+animation-composition - composition of the animation - replace, add, accumulate
+- replace - the animation replaces the previous animation
+- add - the animation adds to the previous animation
+- accumulate - the animation accumulates with the previous animation
+animation-range - plays only a certain part of the animation - start end
+- start and end are percentages of the animation duration
+
+ANIMATION TIMELINE VALUES
+scroll() - the animation is tied to the scroll position of the element
+- scroll(x) - the animation is tied to the scroll position of the element in the x direction
+- scroll(y) - the animation is tied to the scroll position of the element in the y direction
+- scroll(block) - the animation is tied to the scroll position of the element in the block direction
+- scroll(inline) - the animation is tied to the scroll position of the element in the inline direction
+view() - the animation is tied to the visibility of the element in the viewport
+document() - the animation is tied to the scroll position of the document
+element() - the animation is tied to the scroll position of a specific element - element(id)
 
 COLUMN ATTRIBUTES
 columns - number of columns and width of the columns in the element 
