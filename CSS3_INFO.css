@@ -171,17 +171,33 @@ HIDING ELEMENTS
 - use visibility: hidden to hide an element but still have it in the document flow
 - use opacity: 0 to hide an element but still have it in the document flow
 
-MEASUREMENTS
+ABSOLUTE MEASUREMENTS
 px - pixels - absolute size
+cm - centimeters - absolute size
+mm - millimeters - absolute size
+in - inches - absolute size
+pt - points - absolute size - 1 pt = 1/72 in
+pc - picas - absolute size - 1 pc = 12 pt
+
+RELATIVE MEASUREMENTS
 % - percentage of root element - block elements are 100% of the width of the parent element by default
 em - relative to the size of the element - 1 em = 16px
 rem - relative to the size of the page - 1 rem = 16px
 vh - relative to 1% of the height of the screen/viewport
+vb - relative to 1% of the height of the viewport's bigger dimension
 dvh - relative to 1% of the height of the screen/viewport, but accounts for dynamic toolbars on mobile devices
 svh - relative to 1% of the height of the screen/viewport, but assumes there is a dynamic toolbar on mobile devices
 lvh - relative to 1% of the height of the screen/viewport, but ignores dynamic toolbars on mobile devices
 vw - relative to 1% of the width of the screen/viewport
+vi - relative to 1% of the width of the viewport's smaller dimension
+dvw - relative to 1% of the width of the screen/viewport, but accounts for dynamic toolbars on mobile devices
+svw - relative to 1% of the width of the screen/viewport, but assumes there is a dynamic toolbar on mobile devices
+lvw - relative to 1% of the width of the screen/viewport, but ignores dynamic toolbars on mobile devices
 ch - relative to the width of the "0" character in the font
+ex - relative to the height of the "x" character in the font
+cap - relative to the height of the capital letters in the font
+lh - relative to the line height of the element
+rlh - relative to the line height of the root element
 fr - relative to the size of the element. Used in display:grid - 1 fr = 1 fraction of the available space
 
 APPEARANCE ATTRIBUTES
